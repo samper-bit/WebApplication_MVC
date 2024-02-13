@@ -6,13 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace WebApp.Models
 {
 	public class Product
 	{
 		[Key]
-		public int ProductId { get; set; }
+		public int Id { get; set; }
 
 		[Required]
 		[Display(Name = "Product Code")]
@@ -42,7 +43,7 @@ namespace WebApp.Models
 
 		[Required]
 		[Display(Name = "Price for 5+")]
-		[Range(1, 10000000)]
+		//[Range(0.01, 10000000.01)]
 		public double Price5 { get; set; }
 
 		[Required]
@@ -50,11 +51,15 @@ namespace WebApp.Models
 		[Range(1, 10000000)]
 		public double Price20 { get; set; }
 
+		[Display(Name = "Category")]
 		public int CategoryId { get; set; }
+
+		[ValidateNever]
 		[ForeignKey("CategoryId")]
 		public Category Category{ get; set; }
 
-		public string ImageUrl { get; set; }
+		[ValidateNever]
+		public string? ImageUrl { get; set; }
 
 	}
 }

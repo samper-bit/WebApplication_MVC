@@ -1,31 +1,31 @@
 ﻿@model WebApp.Models.Category
 
 <form method="post">
-	<input asp-for="CategoryId" hidden />
+	<input asp-for="Id" hidden />
 	<div class="border p-3 mt-4">
 		<div class="row pb-2">
 			<div class="col-6">
-				<h2 class="text-primary">
+				<h2 class="text-light">
 					Delete Category
 				</h2>
 			</div>
 			<div class="col-6 text-end">
-				<a asp-controller="Category" asp-action="Index" class="btn text-danger">
+				<a asp-controller="Category" asp-action="Index" class="btn text-warning fw-bold">
 					<i class="bi bi-x-circle"></i> Back to List
 				</a>
 			</div>
 			<hr />
 		</div>
 		<div class="mb-3 row">
-			<label asp-for="Name" class="text-warning mb-1 p-0"></label>
+			<label asp-for="Name" class="text-warning mb-1 p-0 fw-bold"></label>
 			<input asp-for="Name" disabled class="form-control" />
 		</div>
 		<div class="mb-3 row">
-			<label asp-for="DisplayOrder" class="text-warning mb-1 p-0"></label>
+			<label asp-for="DisplayOrder" class="text-warning mb-1 p-0 fw-bold"></label>
 			<input asp-for="DisplayOrder" disabled class="form-control" />
 
 		</div>
-		<button type="submit" class="btn btn-lg text-danger p-0 m-0">
+		<button type="submit" class="btn btn-lg text-success p-0 m-0 fw-bold">
 			<i class="bi bi-trash"></i> Delete category
 		</button>
 	</div>

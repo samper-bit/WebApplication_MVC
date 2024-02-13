@@ -23,11 +23,11 @@ namespace WebApp.DataAccess.Migrations
 
             modelBuilder.Entity("WebApp.Models.Category", b =>
                 {
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("DisplayOrder")
                         .HasColumnType("int");
@@ -37,26 +37,26 @@ namespace WebApp.DataAccess.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.HasKey("CategoryId");
+                    b.HasKey("Id");
 
                     b.ToTable("Categories");
 
                     b.HasData(
                         new
                         {
-                            CategoryId = 1,
+                            Id = 1,
                             DisplayOrder = 1,
                             Name = "Mouses"
                         },
                         new
                         {
-                            CategoryId = 2,
+                            Id = 2,
                             DisplayOrder = 2,
                             Name = "Keyboards"
                         },
                         new
                         {
-                            CategoryId = 3,
+                            Id = 3,
                             DisplayOrder = 3,
                             Name = "Headphones"
                         });
@@ -64,11 +64,11 @@ namespace WebApp.DataAccess.Migrations
 
             modelBuilder.Entity("WebApp.Models.Product", b =>
                 {
-                    b.Property<int>("ProductId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
@@ -79,7 +79,6 @@ namespace WebApp.DataAccess.Migrations
                         .HasColumnType("nvarchar(1000)");
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("ListPrice")
@@ -107,7 +106,7 @@ namespace WebApp.DataAccess.Migrations
                         .HasMaxLength(80)
                         .HasColumnType("nvarchar(80)");
 
-                    b.HasKey("ProductId");
+                    b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
@@ -116,7 +115,7 @@ namespace WebApp.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            ProductId = 1,
+                            Id = 1,
                             CategoryId = 1,
                             Description = "Mouse1 Description",
                             ImageUrl = "",
@@ -130,7 +129,7 @@ namespace WebApp.DataAccess.Migrations
                         },
                         new
                         {
-                            ProductId = 2,
+                            Id = 2,
                             CategoryId = 2,
                             Description = "Keyboard1 Description",
                             ImageUrl = "",
@@ -144,7 +143,7 @@ namespace WebApp.DataAccess.Migrations
                         },
                         new
                         {
-                            ProductId = 3,
+                            Id = 3,
                             CategoryId = 3,
                             Description = "Headphone1 Description",
                             ImageUrl = "",

@@ -15,14 +15,14 @@ namespace WebApp.DataAccess.Data
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			modelBuilder.Entity<Category>().HasData(
-				new Category { CategoryId = 1, Name = "Mouses", DisplayOrder = 1 },
-				new Category { CategoryId = 2, Name = "Keyboards", DisplayOrder = 2 },
-				new Category { CategoryId = 3, Name = "Headphones", DisplayOrder = 3 }
+				new Category { Id = 1, Name = "Mouses", DisplayOrder = 1 },
+				new Category { Id = 2, Name = "Keyboards", DisplayOrder = 2 },
+				new Category { Id = 3, Name = "Headphones", DisplayOrder = 3 }
 				) ;
 			modelBuilder.Entity<Product>().HasData(
 			   new Product
 			   {
-				   ProductId = 1,
+				   Id = 1,
 				   ProductCode = 1,
 				   Title = "Mouse1",
 				   Producer = "Mouse1 Producer",
@@ -36,7 +36,7 @@ namespace WebApp.DataAccess.Data
 			   },
 			   new Product
 			   {
-				   ProductId = 2,
+				   Id = 2,
 				   ProductCode = 2,
 				   Title = "Keyboard1",
 				   Producer = "Keyboard1 Producer",
@@ -50,7 +50,7 @@ namespace WebApp.DataAccess.Data
 			   },
 			   new Product
 			   {
-				   ProductId = 3,
+				   Id = 3,
 				   ProductCode = 3,
 				   Title = "Headphone1",
 				   Producer = "Headphone1 Producer",

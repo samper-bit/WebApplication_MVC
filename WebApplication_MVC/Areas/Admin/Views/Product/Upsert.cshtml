@@ -1,0 +1,113 @@
+﻿@model ProductVM
+
+<form method="post" enctype="multipart/form-data">
+	<input asp-for="Product.Id" hidden />
+	<input asp-for="Product.ImageUrl" hidden />
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<div class="col-6">
+				<h2 class="text-light">
+					@(Model.Product.Id != 0 ? "Update" : "Create") Product
+				</h2>
+			</div>
+			<div class="col-6 text-end">
+				<a asp-controller="Product" asp-action="Index" class="btn text-warning fw-bold">
+					<i class="bi bi-x-circle"></i> Back to List
+				</a>
+			</div>
+			<hr />
+		</div>
+		<div class="row" >
+			<div class="col-10">
+				<div class="py-2 col-12 row">
+					<label asp-for="Product.Title" class="text-warning mb-1 p-0 fw-bold"></label>
+					<input asp-for="Product.Title" type="text" class="form-control" />
+					<span asp-validation-for="Product.Title" class="text-danger"></span>
+				</div>
+				<div class="py-2 col-12 row">
+					<label asp-for="Product.ProductCode" class="text-warning mb-1 p-0 fw-bold"></label>
+					<input asp-for="Product.ProductCode" type="text" class="form-control" />
+					<span asp-validation-for="Product.ProductCode" class="text-danger"></span>
+				</div>
+				<div class="py-2 col-12 row">
+					<label asp-for="Product.Producer" class="text-warning mb-1 p-0 fw-bold"></label>
+					<input asp-for="Product.Producer" type="text" class="form-control" />
+					<span asp-validation-for="Product.Producer" class="text-danger"></span>
+				</div>
+				<div class="py-2 col-12 row">
+					<label asp-for="Product.Description" class=" text-warning mb-1 p-0 fw-bold"></label>
+					<textarea class="form-control" asp-for="Product.Description" class="form-control"></textarea>
+				</div>
+				<div class="py-2 col-12 row">
+					<label asp-for="Product.ListPrice" class="text-warning mb-1 p-0 fw-bold"></label>
+					<input asp-for="Product.ListPrice" type="text" class="form-control" />
+					<span asp-validation-for="Product.ListPrice" class="text-danger"></span>
+				</div>
+				<div class="py-2 col-12 row">
+					<label asp-for="Product.Price" class="text-warning mb-1 p-0 fw-bold"></label>
+					<input asp-for="Product.Price" type="text" class="form-control" />
+					<span asp-validation-for="Product.Price" class="text-danger"></span>
+				</div>
+				<div class="py-2 col-12 row">
+					<label asp-for="Product.Price5" class="text-warning mb-1 p-0 fw-bold"></label>
+					<input asp-for="Product.Price5" type="text" class="form-control" />
+					<span asp-validation-for="Product.Price5" class="text-danger"></span>
+				</div>
+				<div class="py-2 col-12 row">
+					<label asp-for="Product.Price20" class="text-warning mb-1 p-0 fw-bold"></label>
+					<input asp-for="Product.Price20" type="text" class="form-control" />
+					<span asp-validation-for="Product.Price20" class="text-danger"></span>
+				</div>
+				<div class="py-2 col-12 row">
+					<label asp-for="Product.CategoryId" class="text-warning mb-1 p-0 fw-bold"></label>
+					<select asp-for="Product.CategoryId" asp-items="@Model.CategoryList" class="form-control">
+						<option disabled selected>--Select Category--</option>
+					</select>
+					<span asp-validation-for="Product.CategoryId" class="text-danger"></span>
+				</div>
+				<div class="py-2 col-12 row">
+					<label asp-for="Product.ImageUrl" class="text-warning mb-1 p-0 fw-bold"></label>
+					<input type="file" name="file" class="form-control" />
+				</div>
+				@if (Model.Product.Id != 0)
+				{
+					<button type="submit" class="btn btn-lg text-success fw-bold">
+						<i class="bi bi-plus-circle pe-1"></i> Update product
+					</button>
+				}
+				else
+				{
+					<button type="submit" class="btn btn-lg text-success fw-bold">
+						<i class="bi bi-plus-circle pe-1"></i> Create product
+					</button>
+				}
+			</div>
+			<div class="col-2">
+				<img src="@Model.Product.ImageUrl" width="100%"
+					style="border-radius:5px; border:1px solid #bbb9b9"/>
+			</div>
+		</div>
+
+	</div>
+</form>
+
+@section Scripts {
+	<script>
+		tinymce.init({
+			selector: 'textarea',
+			plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons lists table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',
+			toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | align lineheight | tinycomments | checklist numlist bullist indent outdent',
+			tinycomments_mode: 'embedded',
+			tinycomments_author: 'Author name',
+			content_css: 'dark',
+			mergetags_list: [
+				{ value: 'First.Name', title: 'First Name' },
+				{ value: 'Email', title: 'Email' },
+			],
+			ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+		});
+	</script>
+	@{
+		<partial name="_ValidationScriptsPartial" />
+	}
+}
