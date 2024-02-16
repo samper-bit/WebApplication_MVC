@@ -59,6 +59,7 @@ namespace WebApp.Models
 		public Category Category{ get; set; }
 
 		[ValidateNever]
+		[Display(Name = "Image")]
 		public string? ImageUrl { get; set; }
 
 	}

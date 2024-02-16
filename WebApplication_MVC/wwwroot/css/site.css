@@ -34,3 +34,7 @@ body {
 .text-red {
     color: #b81414;
 }
+
+select.form-control option {
+    color: black;
+}

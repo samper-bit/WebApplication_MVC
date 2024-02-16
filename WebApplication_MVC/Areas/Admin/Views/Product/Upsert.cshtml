@@ -5,87 +5,124 @@
 	<input asp-for="Product.ImageUrl" hidden />
 	<div class="border p-3 mt-4">
 		<div class="row pb-2">
-			<div class="col-6">
-				<h2 class="text-light">
+			<div class="col-6 mb-2">
+				<h2 class="text-body-secondary">
 					@(Model.Product.Id != 0 ? "Update" : "Create") Product
 				</h2>
 			</div>
 			<div class="col-6 text-end">
-				<a asp-controller="Product" asp-action="Index" class="btn text-warning fw-bold">
+				<a asp-controller="Product" asp-action="Index" class="btn btn-outline-warning fw-bold">
 					<i class="bi bi-x-circle"></i> Back to List
 				</a>
 			</div>
 			<hr />
 		</div>
-		<div class="row" >
+		<div class="row">
 			<div class="col-10">
-				<div class="py-2 col-12 row">
-					<label asp-for="Product.Title" class="text-warning mb-1 p-0 fw-bold"></label>
-					<input asp-for="Product.Title" type="text" class="form-control" />
+				<div class="form-floating mb-3 col-md-12 row shadow">
+					<input asp-for="Product.Title" class="form-control" aria-required="true" placeholder="name@example.com" />
+					<label asp-for="Product.Title" class="ms-2 text-muted"></label>
 					<span asp-validation-for="Product.Title" class="text-danger"></span>
 				</div>
-				<div class="py-2 col-12 row">
-					<label asp-for="Product.ProductCode" class="text-warning mb-1 p-0 fw-bold"></label>
-					<input asp-for="Product.ProductCode" type="text" class="form-control" />
-					<span asp-validation-for="Product.ProductCode" class="text-danger"></span>
+				<div class="form-floating mb-3 col-md-12 row shadow">
+					@if (Model.Product.Id != 0)
+					{
+						<input asp-for="Product.ProductCode" class="form-control" aria-required="true" placeholder="name@example.com" />
+						<label asp-for="Product.ProductCode" class="ms-2 text-muted"></label>
+						<span asp-validation-for="Product.ProductCode" class="text-danger"></span>
+					}
+					else
+					{
+						<input asp-for="Product.ProductCode" value="" class="form-control" aria-required="true" placeholder="name@example.com" />
+						<label asp-for="Product.ProductCode" class="ms-2 text-muted"></label>
+						<span asp-validation-for="Product.ProductCode" class="text-danger"></span>
+					}
 				</div>
-				<div class="py-2 col-12 row">
-					<label asp-for="Product.Producer" class="text-warning mb-1 p-0 fw-bold"></label>
-					<input asp-for="Product.Producer" type="text" class="form-control" />
+				<div class="form-floating mb-3 col-md-12 row shadow">
+					<input asp-for="Product.Producer" class="form-control" aria-required="true" placeholder="name@example.com" />
+					<label asp-for="Product.Producer" class="ms-2 text-muted"></label>
 					<span asp-validation-for="Product.Producer" class="text-danger"></span>
 				</div>
-				<div class="py-2 col-12 row">
-					<label asp-for="Product.Description" class=" text-warning mb-1 p-0 fw-bold"></label>
-					<textarea class="form-control" asp-for="Product.Description" class="form-control"></textarea>
+				<div class="pb-2 col-12 row">
+					<label asp-for="Product.Description" class="text-muted mb-1 ms-2 p-0"></label>
+					<textarea class="form-control" asp-for="Product.Description" class="form-control shadow"></textarea>
 				</div>
-				<div class="py-2 col-12 row">
-					<label asp-for="Product.ListPrice" class="text-warning mb-1 p-0 fw-bold"></label>
-					<input asp-for="Product.ListPrice" type="text" class="form-control" />
-					<span asp-validation-for="Product.ListPrice" class="text-danger"></span>
-				</div>
-				<div class="py-2 col-12 row">
-					<label asp-for="Product.Price" class="text-warning mb-1 p-0 fw-bold"></label>
-					<input asp-for="Product.Price" type="text" class="form-control" />
-					<span asp-validation-for="Product.Price" class="text-danger"></span>
-				</div>
-				<div class="py-2 col-12 row">
-					<label asp-for="Product.Price5" class="text-warning mb-1 p-0 fw-bold"></label>
-					<input asp-for="Product.Price5" type="text" class="form-control" />
-					<span asp-validation-for="Product.Price5" class="text-danger"></span>
-				</div>
-				<div class="py-2 col-12 row">
-					<label asp-for="Product.Price20" class="text-warning mb-1 p-0 fw-bold"></label>
-					<input asp-for="Product.Price20" type="text" class="form-control" />
-					<span asp-validation-for="Product.Price20" class="text-danger"></span>
-				</div>
-				<div class="py-2 col-12 row">
-					<label asp-for="Product.CategoryId" class="text-warning mb-1 p-0 fw-bold"></label>
-					<select asp-for="Product.CategoryId" asp-items="@Model.CategoryList" class="form-control">
+				@if (Model.Product.Id != 0)
+				{
+					<div class="form-floating mb-3 col-md-12 row shadow">
+						<input asp-for="Product.ListPrice" class="form-control" aria-required="true" placeholder="name@example.com" />
+						<label asp-for="Product.ListPrice" class="ms-2 text-muted"></label>
+						<span asp-validation-for="Product.ListPrice" class="text-danger"></span>
+					</div>
+					<div class="form-floating mb-3 col-md-12 row shadow">
+						<input asp-for="Product.Price" class="form-control" aria-required="true" placeholder="name@example.com" />
+						<label asp-for="Product.Price" class="ms-2 text-muted"></label>
+						<span asp-validation-for="Product.Price" class="text-danger"></span>
+					</div>
+					<div class="form-floating mb-3 col-md-12 row shadow">
+						<input asp-for="Product.Price5" class="form-control" aria-required="true" placeholder="name@example.com" />
+						<label asp-for="Product.Price5" class="ms-2 text-muted"></label>
+						<span asp-validation-for="Product.Price5" class="text-danger"></span>
+					</div>
+					<div class="form-floating mb-3 col-md-12 row shadow">
+						<input asp-for="Product.Price20" class="form-control" aria-required="true" placeholder="name@example.com" />
+						<label asp-for="Product.Price20" class="ms-2 text-muted"></label>
+						<span asp-validation-for="Product.Price20" class="text-danger"></span>
+					</div>
+				}
+				else
+				{
+					<div class="form-floating mb-3 col-md-12 row shadow">
+						<input asp-for="Product.ListPrice" value="" class="form-control" aria-required="true" placeholder="name@example.com" />
+						<label asp-for="Product.ListPrice" class="ms-2 text-muted"></label>
+						<span asp-validation-for="Product.ListPrice" class="text-danger"></span>
+					</div>
+					<div class="form-floating mb-3 col-md-12 row shadow">
+						<input asp-for="Product.Price" value="" class="form-control" aria-required="true" placeholder="name@example.com" />
+						<label asp-for="Product.Price" class="ms-2 text-muted"></label>
+						<span asp-validation-for="Product.Price" class="text-danger"></span>
+					</div>
+					<div class="form-floating mb-3 col-md-12 row shadow">
+						<input asp-for="Product.Price5" value="" class="form-control" aria-required="true" placeholder="name@example.com" />
+						<label asp-for="Product.Price5" class="ms-2 text-muted"></label>
+						<span asp-validation-for="Product.Price5" class="text-danger"></span>
+					</div>
+					<div class="form-floating mb-3 col-md-12 row shadow">
+						<input asp-for="Product.Price20" value="" class="form-control" aria-required="true" placeholder="name@example.com" />
+						<label asp-for="Product.Price20" class="ms-2 text-muted"></label>
+						<span asp-validation-for="Product.Price20" class="text-danger"></span>
+					</div>
+				}
+				<div class="form-floating mb-3 col-md-12 row shadow">
+					<select asp-for="Product.CategoryId" asp-items="@Model.CategoryList" class="form-control py-0 text-muted">
 						<option disabled selected>--Select Category--</option>
 					</select>
 					<span asp-validation-for="Product.CategoryId" class="text-danger"></span>
 				</div>
-				<div class="py-2 col-12 row">
-					<label asp-for="Product.ImageUrl" class="text-warning mb-1 p-0 fw-bold"></label>
-					<input type="file" name="file" class="form-control" />
+				<div class="pb-2 col-12 row">
+					<label asp-for="Product.ImageUrl" class="text-muted mb-1 ms-2 p-0"></label>
+					<input type="file" name="file" class="form-control shadow" />
 				</div>
 				@if (Model.Product.Id != 0)
 				{
-					<button type="submit" class="btn btn-lg text-success fw-bold">
+					<button type="submit" class="btn btn-lg btn-outline-success fw-bold row ps-1">
 						<i class="bi bi-plus-circle pe-1"></i> Update product
 					</button>
 				}
 				else
 				{
-					<button type="submit" class="btn btn-lg text-success fw-bold">
+					<button type="submit" class="btn btn-lg btn-outline-success fw-bold row ps-1">
 						<i class="bi bi-plus-circle pe-1"></i> Create product
 					</button>
 				}
 			</div>
-			<div class="col-2">
-				<img src="@Model.Product.ImageUrl" width="100%"
-					style="border-radius:5px; border:1px solid #bbb9b9"/>
-			</div>
+			@if (Model.Product.Id != 0)
+			{
+				<div class="col-2">
+					<img src="@Model.Product.ImageUrl" width="100%"
+						 style="border-radius:5px; border:1px solid #000000" class="shadow" />
+				</div>
+			}
 		</div>
 
 	</div>
