@@ -16,7 +16,7 @@ namespace WebApp.Models
         [Display(Name = "Name")]
         public string Name { get; set; }
 
-        [Display(Name = "Street Adress")]
+        [Display(Name = "Street Address")]
         public string? StreetAddress { get; set; }
 
         [Display(Name = "City")]

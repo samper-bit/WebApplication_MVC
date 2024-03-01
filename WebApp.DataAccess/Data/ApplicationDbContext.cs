@@ -38,7 +38,7 @@ namespace WebApp.DataAccess.Data
 					City = "Lausanne",
 					State = "Switzerland",
 					PostalCode = "1015",
-					PhoneNumber = "+41 (0)21 863 55 11",
+					PhoneNumber = "+41 (0)21 863 55 11"
 				},
 				new Company {
 					Id = 2,
@@ -47,7 +47,7 @@ namespace WebApp.DataAccess.Data
 					City = "Cupertino",
 					State = "United States",
 					PostalCode = "95014",
-					PhoneNumber = "+1 (408) 996-1010",
+					PhoneNumber = "+1 (408) 996-1010"
 				},
 				new Company { 
 					Id = 3, 
@@ -57,8 +57,7 @@ namespace WebApp.DataAccess.Data
 					State = "United States", 
 					PostalCode = "92618", 
 					PhoneNumber = "+91 74004 97400"
-				}
-				);
+				});
 
 			modelBuilder.Entity<Product>().HasData(
 			   new Product
