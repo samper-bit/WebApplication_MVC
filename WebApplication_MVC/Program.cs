@@ -67,7 +67,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
+StripeConfiguration.ApiKey = Environment.GetEnvironmentVariable("SecretKey");
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
